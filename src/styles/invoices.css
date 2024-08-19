@@ -1,0 +1,268 @@
+.invoice {
+    box-shadow: 1px 1px 10px var(--text-color);
+    border-radius: 10px;
+
+    padding: 50px;
+
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.invoice .invoice-title {
+    font-size: 30px;
+    text-align: center;
+}
+
+.invoice .invoice-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    border: 1px solid var(--text-color);
+    direction: rtl;
+}
+
+.invoice .invoice-info span:first-of-type {
+    background-color: #77777750;
+
+}
+
+.invoice .invoice-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.invoice .invoice-info-container {
+
+    display: flex;
+}
+
+.invoice .invoice-info span {
+    border-bottom: 1px solid var(--text-color);
+    padding: 20px;
+    width: 100%;
+    text-align: end;
+}
+
+
+
+
+
+.invoice .pay-options {
+    display: flex;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+
+
+.invoice .pay-with-card {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+    transition: 0.5s;
+    border-radius: 5px;
+    padding: 10px 100px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.invoice .pay-with-card:hover {
+    background-color: white;
+    color: var(--primary-color);
+
+}
+
+
+.invoice .pay-with-wallet {
+    background-color: #777;
+    color: white;
+    border: 1px solid #777;
+    transition: 0.5s;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.invoice .pay-with-wallet:hover {
+    background-color: white;
+    color: #777;
+}
+
+
+.coupon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+}
+
+
+.coupon .coupon-title {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.coupon .coupon-title span {
+    margin-right: 5px;
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.coupon .coupon-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.coupon .coupon-form .copy-btn {
+    background: var(--primary-color);
+    border: 0;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: large;
+    transition: 0.5s;
+
+}
+
+.coupon .coupon-form .copy-btn:hover {
+    background: white;
+    color: var(--primary-color);
+    box-shadow: 1px 1px 10px var(--text-color);
+
+
+}
+
+
+.input-container {
+    direction: rtl;
+    position: relative;
+    margin: 10px 0;
+}
+
+
+.input-field {
+    direction: rtl;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: var(--background-color);
+
+    color: var(--text-color);
+}
+
+
+.input-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    color: rgba(204, 204, 204, 0);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+
+.input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.input-field:focus::placeholder {
+    opacity: 0;
+
+}
+
+.input-field::content {
+    background-color: var(--background-color);
+}
+
+.input-field:focus+.input-label {
+    top: -20px;
+    font-size: 15px;
+    color: var(--primary-color);
+}
+
+.input-field:focus+.input-label+.input-highlight {
+    width: 100%;
+}
+
+
+
+
+.subscribe-conditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscribe-conditions .subscribe-icon {
+    color: var(--primary-color);
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.subscribe-conditions .subscribe-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.subscribe-conditions .subscribe-buttons {
+    width: 100%;
+    justify-content: end;
+    display: flex;
+    gap: 10px;
+}
+
+.subscribe-conditions .subscribe-buttons .next {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+    transition: 0.5s;
+    border-radius: 5px;
+    font-size: large;
+    gap: 10px;
+}
+
+.subscribe-conditions .subscribe-buttons .next:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.subscribe-conditions .subscribe-buttons .close {
+    background-color: #777;
+    color: white;
+    border: 1px solid #777;
+    transition: 0.5s;
+    border-radius: 5px;
+
+    font-size: large;
+    gap: 10px;
+}
+
+.subscribe-conditions .subscribe-buttons .close:hover {
+    background-color: white;
+    color: red;
+}

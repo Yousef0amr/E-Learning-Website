@@ -1,0 +1,391 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.header-image {
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -10px 10px 1px var(--secondary-color);
+
+}
+
+.header-image img {
+    height: 600px;
+
+}
+
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header-content .mainTitle {
+    font-size: 120px;
+    font-weight: bold;
+    box-shadow: 20px 10px 1px var(--secondary-color);
+    background-color: var(--background-color);
+    border-radius: 50%;
+}
+
+.header-content .mainTitle span {
+    margin-right: 5px;
+    font-size: 140px;
+    color: var(--secondary-color);
+}
+
+
+.header-content .subTitle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-radius: 50%;
+}
+
+.header-content .subTitle p {
+    font-size: 35px;
+    font: bolder;
+
+}
+
+.header-content .subTitle p:first-of-type {
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.header-content .subTitle p:first-of-type span {
+    font-weight: 100;
+    color: var(--text-color);
+}
+
+
+.rainy-weather {
+    margin: 0 auto;
+    width: 350px;
+    height: 200px;
+    position: relative;
+}
+
+.cloud-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    width: 350px;
+    height: 100px;
+    border-radius: 100em;
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    background: var(--primary-color);
+    color: white;
+}
+
+.cloud-center {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    background: var(--secondary-color);
+    position: absolute;
+    border-radius: 100em;
+    top: -30px;
+    right: 50px;
+}
+
+.cloud-left {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    background: var(--secondary-color);
+    position: absolute;
+    border-radius: 100em;
+    top: 0;
+    right: 160px;
+}
+
+.droplet {
+    width: 18px;
+    height: 35px;
+    background: radial-gradient(center, farthest-corner, #A4DDF5, #76CBF1);
+    position: absolute;
+    border-radius: 10px 10px 10px 10px / 30px 30px 10px 10px;
+    box-shadow: 0 1px 3px var(--text-color)
+}
+
+.droplet1,
+.droplet4 {
+    right: 70px;
+    top: 100px;
+}
+
+.droplet2,
+.droplet5 {
+    right: 140px;
+    top: 130px;
+}
+
+.droplet3,
+.droplet6 {
+    right: 190px;
+    top: 100px;
+}
+
+
+.droplet1,
+.droplet2,
+.droplet3 {
+    animation: rain2 linear 1.5s infinite .75s;
+}
+
+.droplet4,
+.droplet5,
+.droplet6 {
+    animation: rain linear 1.5s infinite;
+}
+
+
+@keyframes rain {
+    0% {
+        transform: rotate(30deg) translate(0, 0);
+        opacity: 1;
+    }
+
+    90% {
+        transform: rotate(30deg) translate(0, 130px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(30deg) translate(0, 140px);
+        opacity: 0;
+    }
+}
+
+@keyframes rain2 {
+    0% {
+        transform: rotate(30deg) translate(0, 0);
+        opacity: 1;
+    }
+
+    90% {
+        transform: rotate(30deg) translate(0, 130px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(30deg) translate(0, 140px);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    .header {
+        flex-direction: column-reverse;
+
+    }
+
+    .header-content {
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .header-image {
+        display: none;
+    }
+
+    .header-content .mainTitle {
+        font-size: 90px;
+    }
+
+    .header-content .mainTitle span {
+        font-size: 110px;
+    }
+
+    .header-content .subTitle p {
+        font-size: 30px;
+    }
+
+    .header-content .subTitle p:first-of-type {
+        font-size: 45px;
+    }
+
+    .rainy-weather {
+        width: 300px;
+        height: 350px;
+    }
+
+    .cloud-main {
+        width: 300px;
+        height: 90px;
+        font-size: 35px;
+    }
+
+    .cloud-center {
+        width: 160px;
+        height: 160px;
+        top: -25px;
+        right: 40px;
+    }
+
+    .cloud-left {
+        width: 120px;
+        height: 120px;
+        top: 0;
+        right: 140px;
+    }
+
+    .droplet {
+        width: 16px;
+        height: 32px;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .header-content .mainTitle {
+        font-size: 70px;
+    }
+
+    .header-content .mainTitle span {
+        font-size: 90px;
+    }
+
+    .header-content .subTitle p {
+        font-size: 25px;
+    }
+
+    .header-content .subTitle p:first-of-type {
+        font-size: 40px;
+    }
+
+    .rainy-weather {
+        width: 250px;
+        height: 300px;
+    }
+
+    .cloud-main {
+        width: 250px;
+        height: 80px;
+        font-size: 30px;
+    }
+
+    .cloud-center {
+        width: 140px;
+        height: 140px;
+        top: -20px;
+        right: 30px;
+    }
+
+    .cloud-left {
+        width: 100px;
+        height: 100px;
+        top: 0;
+        right: 120px;
+    }
+
+    .droplet {
+        width: 14px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content .mainTitle {
+        font-size: 50px;
+    }
+
+    .header-content .mainTitle span {
+        font-size: 70px;
+    }
+
+    .header-content .subTitle p {
+        font-size: 20px;
+    }
+
+    .header-content .subTitle p:first-of-type {
+        font-size: 35px;
+    }
+
+    .rainy-weather {
+        width: 200px;
+        height: 250px;
+    }
+
+    .cloud-main {
+        width: 200px;
+        height: 70px;
+        font-size: 25px;
+    }
+
+    .cloud-center {
+        width: 120px;
+        height: 120px;
+        top: -15px;
+        right: 20px;
+    }
+
+    .cloud-left {
+        width: 80px;
+        height: 80px;
+        top: 0;
+        right: 100px;
+    }
+
+    .droplet {
+        width: 12px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-content .mainTitle {
+        font-size: 40px;
+    }
+
+    .header-content .mainTitle span {
+        font-size: 60px;
+    }
+
+    .header-content .subTitle p {
+        font-size: 18px;
+    }
+
+    .header-content .subTitle p:first-of-type {
+        font-size: 30px;
+    }
+
+    .rainy-weather {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cloud-main {
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+
+}

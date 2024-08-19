@@ -1,0 +1,108 @@
+.service {
+    border-radius: 10px;
+}
+
+.cardService {
+    background: var(--primary-color);
+    height: 250px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+.cardService:hover {
+    background: var(--secondary-color);
+}
+
+.cardService .cardIcon {
+    background-color: #ffffff57;
+    font-size: 40px;
+    color: white;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.cardService .cardTitle {
+    margin-top: 10px;
+    background-color: #ffffff57;
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.cardService:hover .cardIcon {
+    background-color: white;
+    color: black;
+    transform: translate(0, -20px) rotate(360deg);
+}
+
+.cardService:hover .cardTitle {
+    transform: scale(1.1);
+}
+
+@media (max-width: 992px) {
+    .cardService {
+        height: 200px;
+    }
+
+    .cardService .cardIcon {
+        font-size: 35px;
+        height: 80px;
+        width: 80px;
+        padding: 10px;
+    }
+
+    .cardService .cardTitle {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardService {
+        height: 180px;
+    }
+
+    .cardService .cardIcon {
+        font-size: 30px;
+        height: 70px;
+        width: 70px;
+        padding: 8px;
+    }
+
+    .cardService .cardTitle {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .cardService {
+        height: 150px;
+    }
+
+    .cardService .cardIcon {
+        font-size: 25px;
+        height: 60px;
+        width: 60px;
+        padding: 5px;
+    }
+
+    .cardService .cardTitle {
+        font-size: 12px;
+        padding: 4px;
+    }
+}

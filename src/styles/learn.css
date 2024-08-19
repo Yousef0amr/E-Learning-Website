@@ -1,0 +1,126 @@
+.learn {
+    padding: 0;
+    display: flex;
+
+}
+
+
+.learn .course {
+    width: 75%;
+    z-index: 1000000;
+}
+
+
+
+
+
+.learn .video .video-menu {
+    height: 20vh;
+    background-color: var(--background-color);
+}
+
+.learn .play-list {
+    position: fixed;
+    right: 0;
+    width: 25%;
+    border-left: 1px solid rgba(0, 0, 0, 0.288);
+    z-index: 1000000;
+    background-color: var(--background-color);
+
+}
+
+.learn .play-list .play-list-header {
+    z-index: 1;
+    direction: rtl;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 30px;
+    font-size: 20px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.learn .play-list .play-list-content {
+    background-color: rgba(138, 138, 138, 0.849);
+    overflow: auto;
+    height: 92vh;
+}
+
+
+
+.learn .accordion-item {
+    border-radius: 0;
+    background-color: #EEEEEE;
+
+}
+
+.learn .accordion-button {
+    color: black;
+    font-size: 20px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    box-shadow: none;
+    transition: 0.5S;
+    border-radius: 0;
+    background-color: #f7f7f7;
+}
+
+
+.learn .accordion-button:not(.collapsed) {
+    transition: 0.5s;
+    background: #EEEEEE;
+    box-shadow: none;
+}
+
+.learn .accordion-button::after {
+    margin: 0;
+}
+
+.learn .accordion-body {
+    padding: 0;
+    color: black;
+}
+
+
+.learn .lectures {
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+
+}
+
+.learn .lectures li {
+    cursor: pointer;
+    border-bottom: 1px solid rgba(185, 185, 185, 0.267);
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+}
+
+.learn .lectures li .time {
+    font-size: 15px;
+    color: #434343d3;
+
+}
+
+.learn .lectures li:hover {
+    background-color: rgba(211, 211, 211, 0.432);
+
+}
+
+.lecture-active {
+    background: #0000002f !important;
+    background: -webkit-linear-gradient(to right, #434343, #000000) !important;
+    background: linear-gradient(to right, #434343, #000000) !important;
+    color: white !important;
+    border-left: 15px solid white;
+}
+
+.learn .lectures li.lecture-active .time {
+    color: #ffffffd3;
+}

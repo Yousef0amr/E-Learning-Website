@@ -1,0 +1,155 @@
+.level {
+    margin-bottom: 100px;
+}
+
+.LevelCard {
+    position: relative;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px var(--text-color);
+}
+
+.LevelCard img {
+    max-width: 100%;
+    transition: 0.3s;
+}
+
+.LevelCard .subTitle {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.945);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: black;
+    border-radius: 3px;
+    padding: 5px 20px;
+    transition: 0.5s;
+}
+
+.LevelCard:hover img {
+    transform: scale(1.1);
+}
+
+.LevelCard:hover .subTitle {
+    opacity: 1;
+}
+
+.LevelCard .title {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    transition: all ease-in-out 0.4s;
+    font-size: 20px;
+}
+
+.LevelCard:hover .title {
+    transform: translate(10px, 1px) scale(1.1) rotate(360deg);
+    width: 120px;
+    height: 120px;
+    border-radius: 0;
+    border-top-left-radius: 50%;
+}
+
+@media (max-width: 1200px) {
+    .LevelCard .title {
+        width: 100px;
+        height: 100px;
+        font-size: 18px;
+    }
+
+    .LevelCard:hover .title {
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+    }
+
+    .LevelCard .subTitle {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .LevelCard .title {
+        width: 100px;
+        height: 100px;
+        font-size: 16px;
+    }
+
+    .LevelCard:hover .title {
+        width: 100px;
+        height: 100px;
+        font-size: 18px;
+    }
+
+    .LevelCard .subTitle {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .LevelCard .title {
+        width: 90px;
+        height: 90px;
+        font-size: 14px;
+    }
+
+    .LevelCard:hover .title {
+        width: 90px;
+        height: 90px;
+        font-size: 16px;
+    }
+
+    .LevelCard .subTitle {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .LevelCard {
+        margin-top: 50px;
+    }
+
+    .LevelCard .title {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+    }
+
+    .LevelCard:hover .title {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+    }
+
+    .LevelCard .subTitle {
+        font-size: 12px;
+    }
+
+    .levelsTitle {
+        font-size: 35px;
+        padding-top: 30px;
+        margin-bottom: 20px;
+    }
+}
