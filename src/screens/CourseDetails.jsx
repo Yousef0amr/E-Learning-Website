@@ -5,25 +5,23 @@ import { CourseContent } from '../components/course/CourseContent';
 import { useGetCourseQuery } from '../features/slices/courseSlice';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/common/Loader';
-import CourseGoals from '../components/course/CourseGoals';
 import { Container } from 'react-bootstrap';
 import { Footer } from '../components/common/Footer';
+import RefreshComponent from './../components/common/RefreshComponent';
 
 export const CourseDetails = () => {
-    const { id } = useParams()
-    const { data, isLoading, isError } = useGetCourseQuery(id)
-
+    const { courseId } = useParams()
+    const { data, isLoading, isError, refetch } = useGetCourseQuery(courseId)
 
     return (
         <>
             {
                 isLoading ? <Loader /> :
-                    isError ? <>error</> :
+                    isError ? <RefreshComponent refetch={refetch} /> :
                         data && data.data.course
                         && <div className='courseDetials'>
                             <CourseHeader course={data.data.course} show={true} />
-                            <Container  >
-                                <CourseGoals />
+                            <Container style={{ marginTop: '100px', marginBottom: '50px', minHeight: '50vh' }}  >
                                 <CourseContent sections={data.data.course.sections} />
                             </Container>
                         </div>

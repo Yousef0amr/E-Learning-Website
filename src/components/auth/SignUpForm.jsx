@@ -6,21 +6,22 @@ import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faAt, faCircleExclamation, faUser, faPhone } from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from 'react-router-dom';
-import { useSignUpMutation } from '../../features/slices/authSlice';
-import { useAuth } from './../../utils/auth';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import SpinnerLoader from '../common/Spinner';
+import { useTranslation } from 'react-i18next';
+import AppStrings from '../../utils/appStrings';
 
-const schema = yup.object({
-    userName: yup.string().min(6, "  يجب ان يكون الاسم اكبر من 8 احرف").required("اسم المستخدم مطلوب"),
-    phone: yup.string().min(10, "ادخل رقم هاتف صحيح").max(11,).required("رقم الهاتف مطلوب"),
-    email: yup.string().email("قم بأدخال بريد الكتروني صحيح").required("البريد الالكتروني مطلوب"),
-    password: yup.string().min(8, "كلمة المرور يجب ان تكون اكبر من 8 احرف").required("كلمة المرور مطلوبة")
-}).required();
-const SignUpForm = () => {
-    const navigate = useNavigate();
-    const [signUp, { isLoading }] = useSignUpMutation()
-    const { loginLocal } = useAuth();
+
+const SignUpForm = ({ isLoading, onSubmit }) => {
+
+    const { t } = useTranslation()
+
+    const schema = yup.object({
+        userName: yup.string().min(6, t(AppStrings.user_name_length_error)).required(t(AppStrings.user_name_required_error)),
+        phone: yup.string().min(10, t(AppStrings.user_phone_length_error)).max(11,).required(t(AppStrings.user_phone_required_error)),
+        email: yup.string().email(t(AppStrings.user_email_invalid_error)).required(t(AppStrings.user_email_required_error)),
+        password: yup.string().min(8, t(AppStrings.password_length_error)).required(t(AppStrings.password_required_error))
+    }).required();
     const {
         register,
         handleSubmit,
@@ -29,29 +30,12 @@ const SignUpForm = () => {
         resolver: yupResolver(schema),
     })
 
-    const onSubmit = async (user) => {
-        try {
-            const { data } = await signUp(user).unwrap()
 
-            if (data.accessToken) {
-                loginLocal(data.accessToken);
-                toast.success('تم تسجيل الدخول بنجاح');
-                setTimeout(() => {
-                    navigate('/', { replace: true });
-                }, 2000);
-            }
-
-        } catch (error) {
-            console.log(error)
-            toast.error(error.data.message);
-        }
-
-    }
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <div className='input-filed'>
                 <input
-                    placeholder='الاسم'
+                    placeholder={t(AppStrings.user_name)}
                     {...register('userName')}
                 />
                 <FontAwesomeIcon icon={faUser} className='icon-filed' />
@@ -59,7 +43,7 @@ const SignUpForm = () => {
             {errors.userName && <div className='error-message'><FontAwesomeIcon icon={faCircleExclamation} /> {errors.userName.message}</div>}
             <div className='input-filed'>
                 <input
-                    placeholder='رقم الهاتف'
+                    placeholder={t(AppStrings.phone)}
                     {...register('phone')}
                 />
                 <FontAwesomeIcon icon={faPhone} className='icon-filed' />
@@ -67,7 +51,7 @@ const SignUpForm = () => {
             {errors.phone && <div className='error-message'><FontAwesomeIcon icon={faCircleExclamation} /> {errors.phone.message}</div>}
             <div className='input-filed'>
                 <input
-                    placeholder='البريد الالكتروني'
+                    placeholder={t(AppStrings.email)}
                     {...register('email')}
                 />
                 <FontAwesomeIcon icon={faAt} className='icon-filed' />
@@ -75,20 +59,20 @@ const SignUpForm = () => {
             {errors.email && <div className='error-message'><FontAwesomeIcon icon={faCircleExclamation} /> {errors.email.message}</div>}
             <div className='input-filed'>
                 <input
-                    placeholder='كلمة المرور'
+                    placeholder={t(AppStrings.password)}
                     type='password'
                     {...register('password')}
                 />
                 <FontAwesomeIcon icon={faHashtag} className='icon-filed' />
             </div>
             {errors.password && <div className='error-message'><FontAwesomeIcon icon={faCircleExclamation} /> {errors.password.message}</div>}
-            <Button type="submit" className='submit-button' disabled={isLoading}> {isLoading ? ` ...${'!'}  أنشئ الحساب` : ` ${'!'}  أنشئ الحساب`}</Button>
+            <Button type="submit" className='submit-button' disabled={isLoading}> {isLoading ? <SpinnerLoader /> : ` ${'!'}   ${t(AppStrings.sign_up)}`}</Button>
 
             <div className='no-account mt-3 d-flex flex-row-reverse'>
-                <p>يوجد لديك حساب بالفعل؟</p>
+                <p>{t(AppStrings.already_have_account)}   </p>
 
                 <Link to={'/login'}> <span>
-                    ادخل إلى حسابك الآن
+                    {t(AppStrings.login)}
                 </span></Link>
 
             </div>

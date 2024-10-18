@@ -2,14 +2,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { SOURCEURL } from '../../api/endpoints'
+import { Card } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import AppStrings from '../../utils/appStrings'
 
 export const CourseCard = ({ course, isEnrolled, ...props }) => {
-    const enrollment_id = isEnrolled ? props.enrollment_id : course.enrollments[0].enrollment_id || null
+    const { t } = useTranslation()
     return (
 
-        <div className="card">
-            <Link to={isEnrolled ? `/course/${course.course_id}/learn/${enrollment_id}` : `course/${course.course_id}`}>
-                <img src={SOURCEURL + course.poster_url} alt="" className=" card-img-top" />
+        <Card className="card-course">
+            <Link to={isEnrolled ? `/course/${course.course_id}/learn/${props.enrollment_id}` : `course/${course.course_id}`}>
+                <div className="card-img-top" >
+                    <img src={SOURCEURL + course.poster_url} alt="" loading="lazy" />
+
+                </div>
                 <div className="card-body">
                     <h3 className="card-title">{course.title}</h3>
                     <p className="card-text">
@@ -17,21 +23,22 @@ export const CourseCard = ({ course, isEnrolled, ...props }) => {
                     </p>
                 </div>
             </Link>
+
             {
-                enrollment_id ? <div className="card-footer"> <Link to={`/course/${course.course_id}/learn/${enrollment_id}`}>
+                props.enrollment_id ? <div className="card-footer"> <Link to={`/course/${course.course_id}/learn/${props.enrollment_id}`}>
                     <div className='card-link'  >
-                        مشاهدة الكورس
+                        {t(AppStrings.watch_course)}
                     </div>
 
                 </Link></div> : <div className="card-footer">
-                    <span className="price"> {course.price} جنيهًا</span>
-                    <Link to={`course/${course.ourse_id}/subscribe/invoice`}>
-                        <span className="card-link">اشترك الان</span>
+                    <span className="price"> {course.price} {t(AppStrings.currency)}</span>
+                    <Link to={`course/${course.course_id}/subscribe/invoice`}>
+                        <span className="card-link">{t(AppStrings.subscribe)}</span>
                     </Link>
 
                 </div>
             }
 
-        </div>
+        </Card>
     )
 }

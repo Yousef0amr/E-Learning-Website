@@ -7,79 +7,115 @@
 
 .learn .course {
     width: 75%;
-    z-index: 1000000;
+    z-index: 1200;
+
+}
+
+.learn .course .course-info {
+    padding: 10px;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--text-color);
+    margin-bottom: 150px;
+}
+
+.learn .course .course-info .course-img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+
+}
+
+.learn .course .course-info .course-img img {
+    border-radius: 50%;
 }
 
 
-
-
-
-.learn .video .video-menu {
-    height: 20vh;
-    background-color: var(--background-color);
-}
 
 .learn .play-list {
     position: fixed;
     right: 0;
+    top: 100px;
     width: 25%;
-    border-left: 1px solid rgba(0, 0, 0, 0.288);
-    z-index: 1000000;
-    background-color: var(--background-color);
+
+    z-index: 1200;
+    color: var(--text-color);
+
+    background-color: var(--primary-color);
+    transition: 1s;
 
 }
 
 .learn .play-list .play-list-header {
-    z-index: 1;
+    z-index: 1200;
     direction: rtl;
-    background-color: rgb(255, 255, 255);
+
     padding: 20px 30px;
     font-size: 20px;
-    color: black;
+    color: white;
     display: flex;
     justify-content: space-between;
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow-effect);
 }
 
 
 .learn .play-list .play-list-content {
-    background-color: rgba(138, 138, 138, 0.849);
+
     overflow: auto;
-    height: 92vh;
+    height: 100%;
+
+
 }
 
 
 
 .learn .accordion-item {
-    border-radius: 0;
-    background-color: #EEEEEE;
+    border-radius: 0 !important;
 
+    box-shadow: none;
+    color: var(--text-color) !important;
+    border: 0;
+    border-bottom: 1px solid var(--text-color);
+
+    transition: 0.5s;
+    background-color: var(--background-color) !important;
 }
 
+
+
 .learn .accordion-button {
-    color: black;
+    color: var(--text-color) !important;
     font-size: 20px;
-    flex-direction: row-reverse;
+    direction: rtl;
     justify-content: space-between;
-    box-shadow: none;
+    background-color: var(--background-color) !important;
     transition: 0.5S;
-    border-radius: 0;
-    background-color: #f7f7f7;
+    border-radius: 0 !important;
+    box-shadow: none;
+
 }
 
 
 .learn .accordion-button:not(.collapsed) {
     transition: 0.5s;
-    background: #EEEEEE;
     box-shadow: none;
+    border-top-left-radius: 10px !important;
+    border-bottom: 1px solid var(--text-color);
 }
 
 .learn .accordion-button::after {
     margin: 0;
+    background-color: white;
+    padding: 2px;
+    border-radius: 50px;
 }
 
 .learn .accordion-body {
     padding: 0;
-    color: black;
+
 }
 
 
@@ -93,34 +129,255 @@
 .learn .lectures li {
     cursor: pointer;
     border-bottom: 1px solid rgba(185, 185, 185, 0.267);
-    padding: 15px;
-    background-color: rgb(255, 255, 255);
+    padding: 15px 25px 15px 15px;
+    background-color: rgba(211, 211, 211, 0.562);
     transition: 0.5s;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: black;
+
+    color: var(--text-color);
 }
 
 .learn .lectures li .time {
     font-size: 15px;
-    color: #434343d3;
+
 
 }
 
 .learn .lectures li:hover {
-    background-color: rgba(211, 211, 211, 0.432);
-
+    background-color: rgba(211, 211, 211, 0.562);
+    color: var(--text-color);
 }
 
 .lecture-active {
-    background: #0000002f !important;
-    background: -webkit-linear-gradient(to right, #434343, #000000) !important;
-    background: linear-gradient(to right, #434343, #000000) !important;
-    color: white !important;
-    border-left: 15px solid white;
+    background: var(--primary-color);
+
+
+    border-left: 15px solid var(--primary-color);
+    color: var(--text-color);
+
 }
 
-.learn .lectures li.lecture-active .time {
-    color: #ffffffd3;
+.learn .lectures li.lecture-active .time {}
+
+
+
+
+.resource .resource-header {
+    padding: 10px;
+    font-size: 15px;
 }
+
+.lecture-inactive {
+    position: relative;
+}
+
+
+
+.lecture-inactive::after {
+    position: absolute;
+    content: 'عليك حل أختبار الدرس السابق   والحصول علي درجة أعلي من النصف لكي تستطيع فتح المحاضرة ';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: white;
+    background-color: var(--question-color-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.lecture-inactive::after:hover {
+    display: flex;
+}
+
+
+.note-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.form-collapse {
+    width: 50%;
+}
+
+.add-note {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.397);
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.397);
+    transition: 0.5s;
+    width: 50%;
+}
+
+.add-note:hover {
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.397);
+    border: 1px solid rgba(0, 0, 0, 0.397);
+
+}
+
+
+.note-form {
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    gap: 10px;
+}
+
+
+
+
+.note-form .note-title-input {
+    border: 1px solid rgba(0, 0, 0, 0.397);
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+
+}
+
+
+.note-form .note-content-input {
+    border: 1px solid rgba(0, 0, 0, 0.397);
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+
+    height: 100px;
+    resize: none;
+
+}
+
+
+.note {
+
+    border-bottom: 1px dashed var(--text-color);
+
+}
+
+.note .note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.note .note-header div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.note .note-header .note-title {
+    font-size: 26px;
+}
+
+.note .note-header .note-number {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    background-color: var(--question-color-1);
+}
+
+
+.note .note-body {
+    padding: 20px 30px;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+
+.note-modal {
+    width: 600px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+
+    .learn .course {
+        width: 100%;
+
+    }
+
+
+    .learn .play-list {
+        display: none;
+    }
+
+
+}
+
+
+@media (max-width: 992px) {}
+
+@media (max-width: 768px) {
+    .note-modal {
+        width: 100%;
+    }
+
+    .add-note {
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .form-collapse {
+        width: 100%;
+    }
+
+    .note .note-header .note-title {
+        font-size: 22px;
+    }
+
+    .note .note-header .note-number {
+        height: 24px;
+        width: 24px;
+        font-size: 15px;
+    }
+
+    .note .note-body {
+        font-size: 18px;
+    }
+
+    .learn .accordion-button {
+        font-size: 15px;
+    }
+
+    .learn .course .course-info {
+        font-size: 16px;
+    }
+
+    .learn .course .course-info .course-img {
+        height: 80px;
+        width: 80px;
+    }
+
+
+    .learn .course .course-info h3 {
+        font-size: 18px;
+    }
+
+
+}
+
+
+@media (max-width: 576px) {}

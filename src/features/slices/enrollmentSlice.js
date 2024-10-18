@@ -3,6 +3,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASEURL, USER } from '../../api/endpoints';
 import getCookie from '../../utils/getCookie';
 
+
+
+
 export const enrollmentApi = createApi({
     reducerPath: 'enrollmentApi',
     baseQuery: fetchBaseQuery({
@@ -13,11 +16,13 @@ export const enrollmentApi = createApi({
             return headers;
         }
     }),
+
     endpoints: (builder) => ({
         getUserEnrollments: builder.query({
             query: () => ({
                 url: '/my-courses',
                 method: 'GET',
+
             }),
         }),
         getEnrollmentCourse: builder.query({

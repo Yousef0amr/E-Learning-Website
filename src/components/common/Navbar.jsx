@@ -1,31 +1,42 @@
 
 import * as React from 'react';
-import { Button } from 'react-bootstrap';
-import { Link, redirect } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { useAuth } from '../../utils/auth';
 import { useLogoutMutation } from './../../features/slices/authSlice';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import logo from './../../assets/logo.png'
 import SwitchMode from './SwitchMode';
 import CustomToggle from './CustomToggle';
+import AuthButton from '../navbar/AuthButton';
+import MenuBar from '../navbar/MenuBar';
+import notification from '../../utils/toastNotify';
+import { useTranslation } from 'react-i18next';
+import AppStrings from '../../utils/appStrings';
+import AnchorTemporaryDrawer from './Drawer';
+import { faGraduationCap, faHome, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
 
 function NavbarComponent({ toggleDarkMode, darkMode }) {
 
+    const { t } = useTranslation();
+    const { isAuthenticated, logoutLocal } = useAuth();
+    const [logout] = useLogoutMutation();
+    const navigate = useNavigate();
+    const [state, setState] = React.useState(false);
 
-    const { isAuthenticated, logoutLocal } = useAuth()
-    const [logout] = useLogoutMutation()
+    const toggleDrawer = () => {
+        setState(prev => prev ? false : true);
+    };
+
     const onLogOut = async () => {
         try {
-            await logout().unwrap()
-            logoutLocal()
-            redirect('/', { replace: true })
+            await logout().unwrap();
+            logoutLocal();
+            navigate('/login', { replace: true });
         } catch (error) {
-            toast.error(error.data.message)
+            notification('error', t(AppStrings.signoutFailed), error);
         }
 
     }
@@ -48,6 +59,44 @@ function NavbarComponent({ toggleDarkMode, darkMode }) {
     }, []);
 
 
+    const listItems = [{
+        label: t(AppStrings.home),
+        href: '/',
+    },
+    {
+        label: t(AppStrings.login),
+        href: '/login',
+    },
+    {
+        label: t(AppStrings.sign_up),
+        href: '/sign-up',
+    }
+    ];
+
+    const menuListItems = [{
+        label: t(AppStrings.home),
+        href: '/',
+        icon: faHome
+    },
+    {
+        label: t(AppStrings.profile),
+        href: '/profile',
+        icon: faUser
+    },
+    {
+        label: t(AppStrings.my_wallet),
+        href: 'profile/my-wallet',
+        icon: faWallet
+    },
+    {
+        label: t(AppStrings.my_courses),
+        href: '/my-courses',
+        icon: faGraduationCap
+    },
+
+    ];
+
+
     return (
         <>
             <Navbar expand="lg" className={`navbar ${scrolled ? 'navbar-scrolled' : 'navbar'}`}>
@@ -57,43 +106,35 @@ function NavbarComponent({ toggleDarkMode, darkMode }) {
                             <h1 className="title">
                                 <img src={logo} alt="الغالي" style={{ width: '100px' }} />
                             </h1>
-
                         </Link>
-
                     </Navbar.Brand>
                     <Nav className='me-auto' >
                         <SwitchMode toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
                     </Nav>
-                    <CustomToggle />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto">
-                            {isAuthenticated ? (
-                                <div className="auth-buttons">
-                                    <Button className="logout" onClick={onLogOut}>
-                                        تسجيل الخروج
-                                    </Button>
-                                    <Link to="/my-courses">
-                                        <Button className="auth-login">
-                                            كورساتي
-                                        </Button>
-                                    </Link>
-                                </div>
-                            ) : (
-                                <div className="auth-buttons">
-                                    <Link to="/login">
-                                        <Button className="auth-login">
-                                            تسجيل الدخول <FontAwesomeIcon icon={faArrowRightFromBracket} color="#ff4b2bbb" />
-                                        </Button>
-                                    </Link>
-                                    <Link to="/sign-up">
-                                        <Button className="auth-signUp">{'!'} انشئ حسابك الأن</Button>
-                                    </Link>
-                                </div>
-                            )}
-                        </Nav>
-                    </Navbar.Collapse>
+                    <CustomToggle toggleDrawer={toggleDrawer} />
 
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        {
+                            state ? <div >
+
+                                <AnchorTemporaryDrawer toggleDrawer={toggleDrawer} state={state} listItems={
+                                    isAuthenticated ?
+                                        menuListItems : listItems
+
+                                } >
+
+                                </AnchorTemporaryDrawer>
+                            </div> : <Nav className="ms-auto">
+                                {isAuthenticated ? (
+                                    <MenuBar onLogOut={onLogOut} />
+                                ) : (
+                                    <AuthButton />
+                                )}
+                            </Nav>
+                        }
+                    </Navbar.Collapse>
                 </Container>
+
             </Navbar>
             <ToastContainer />
         </>

@@ -1,35 +1,38 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import AppStrings from '../../utils/appStrings'
 
 const InvoiceInfo = ({ totalPrice, discount, price }) => {
+    const { t } = useTranslation()
     return (
         <>
             <h3 className='invoice-title'>
-                الفاتورة
+                {t(AppStrings.invoice_info)}
             </h3>
             <div className='invoice-info-container'>
                 <div className='invoice-info'>
                     <span>
-                        الاجمالي
+                        {t(AppStrings.total_price)}
                     </span>
                     <span>
-                        {totalPrice} جنيهًا
+                        {totalPrice} {t(AppStrings.currency)}
                     </span>
                 </div>
 
                 <div className='invoice-info'>
                     <span>
-                        الخصم
+                        {t(AppStrings.discount)}
                     </span>
                     <span>
-                        {discount} جنيهًا
+                        {discount}  {t(AppStrings.currency)}
                     </span>
                 </div>
                 <div className='invoice-info'>
                     <span>
-                        سعر الكورس
+                        {t(AppStrings.course_price)}
                     </span>
                     <span>
-                        {price}جنيهًا
+                        {price} {t(AppStrings.currency)}
                     </span>
                 </div>
             </div>

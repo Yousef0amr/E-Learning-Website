@@ -5,7 +5,7 @@ const notification = (type, message = '', error = {}, promiseFun) => {
         case 'success':
             return toast.success(message);
         case 'error':
-            return toast.error(error.message || error.data.message || message);
+            return toast.error(error.message || (error.error ? message : error.error) || error.data.message || message, { position: "bottom-left" });
         case 'info':
             return toast.info(message);
         case 'promise':

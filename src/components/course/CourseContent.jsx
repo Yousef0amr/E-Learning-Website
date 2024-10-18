@@ -3,13 +3,16 @@ import { Container } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVideo } from '@fortawesome/free-solid-svg-icons'
+import { useTranslation } from 'react-i18next';
+import AppStrings from '../../utils/appStrings';
 
 export const CourseContent = ({ sections }) => {
+    const { t } = useTranslation()
 
     return (
         <Container >
             <div className='courseContent'>
-                <span className='title'>محتوي الكورس</span>
+                <span className='title'>{t(AppStrings.course_content)}</span>
                 <div className='content'>
                     {
                         sections.map((section) => <Accordion key={section.section_id}>

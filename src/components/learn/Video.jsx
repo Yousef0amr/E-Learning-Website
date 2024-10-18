@@ -1,26 +1,33 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
 import { BigPlayButton, LoadingSpinner, Player } from 'video-react';
 import "./../../../node_modules/video-react/dist/video-react.css";
 
-export const Video = ({ videoLink }) => {
+export const Video = ({ videoLink, onTimeUpdate }) => {
     const playerRef = useRef(null);
 
     useEffect(() => {
+        const videoElement = playerRef.current?.video?.video;
 
         if (playerRef.current) {
             playerRef.current.load();
         }
 
-        const videoElement = playerRef.current.video.video;
-
         const handleContextMenu = (event) => {
             event.preventDefault();
         };
 
-        videoElement.addEventListener('contextmenu', handleContextMenu);
+
+
+        if (videoElement) {
+            videoElement.addEventListener('contextmenu', handleContextMenu);
+
+        }
 
         return () => {
-            videoElement.removeEventListener('contextmenu', handleContextMenu);
+            if (videoElement) {
+                videoElement.removeEventListener('contextmenu', handleContextMenu);
+
+            }
         };
     }, [videoLink]);
 
@@ -31,5 +38,5 @@ export const Video = ({ videoLink }) => {
                 <LoadingSpinner />
             </Player>
         </div>
-    )
-}
+    );
+};

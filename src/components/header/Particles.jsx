@@ -15,6 +15,7 @@ export const ParticlesComponent = () => {
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
+
             options={{
 
                 fpsLimit: 120,

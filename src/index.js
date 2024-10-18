@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
@@ -13,23 +13,30 @@ import AuthProvider from './utils/auth.js';
 import { CookiesProvider } from 'react-cookie';
 import { ThemeProvider } from './context/ThemeProvider.jsx';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import Loader from './components/common/Loader.jsx';
+import { ErrorBoundary } from "react-error-boundary";
+import './../src/localization/config.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <StrictMode>
-    <BrowserRouter>
-      <ThemeProvider >
-        <Provider store={store}>
-          <CookiesProvider >
-            <AuthProvider>
-              <App />
-            </AuthProvider>
-          </CookiesProvider>
-        </Provider>
-      </ThemeProvider>
-    </BrowserRouter>
-  </StrictMode>
+  <ErrorBoundary fallback={<>some thing went wrong</>} >
+    <StrictMode>
+      <Suspense fallback={<Loader />} >
+
+        <BrowserRouter>
+          <ThemeProvider >
+            <Provider store={store}>
+              <CookiesProvider >
+                <AuthProvider>
+                  <App />
+                </AuthProvider>
+              </CookiesProvider>
+            </Provider>
+          </ThemeProvider>
+        </BrowserRouter>
+
+      </Suspense>
+    </StrictMode>
+  </ErrorBoundary>
 );

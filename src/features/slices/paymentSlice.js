@@ -22,7 +22,34 @@ export const paymentApi = createApi({
                 body: convertToFormData(order)
             })
         }),
+        generateWalletInvoice: builder.mutation({
+            query: (order) => ({
+                url: '/generate-wallet-invoice',
+                method: 'POST',
+                body: convertToFormData(order)
+            })
+        }),
+        getAllInvoices: builder.query({
+            query: () => ({
+                url: '',
+                method: 'GET',
+            })
+        }),
+        payWithWallet: builder.mutation({
+            query: (order) => ({
+                url: '/pay-with-wallet',
+                method: 'POST',
+                body: convertToFormData(order)
+            })
+        }),
+        chargeCode: builder.mutation({
+            query: (chargeCodeDto) => ({
+                url: '/charge-code',
+                method: 'POST',
+                body: convertToFormData(chargeCodeDto)
+            })
+        }),
     }),
 });
 
-export const { useGenerateInvoiceMutation } = paymentApi;
+export const { useGenerateInvoiceMutation, usePayWithWalletMutation, useGetAllInvoicesQuery, useChargeCodeMutation, useGenerateWalletInvoiceMutation } = paymentApi;

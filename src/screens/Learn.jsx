@@ -1,85 +1,78 @@
 import React, { useEffect, useState } from 'react'
 import './../styles/learn.css'
-import Accordion from 'react-bootstrap/Accordion';
+
 import { Video } from '../components/learn/Video';
 import { Footer } from '../components/common/Footer';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetEnrollmentCourseQuery } from '../features/slices/enrollmentSlice';
 import Loader from '../components/common/Loader';
 import { SOURCEURL } from '../api/endpoints';
+import PlayList from '../components/learn/PlayList';
+import CourseTabs from '../components/learn/CourseTabs';
+import Quiz from './Quiz';
+import Note from '../components/learn/Note';
+import PlayListContent from '../components/learn/PlayListContent';
+import CourseInfo from '../components/learn/CourseInfo';
+import RefreshComponent from '../components/common/RefreshComponent';
+
 export const Learn = () => {
-    const { enrollmentId } = useParams()
-    const { data, isLoading, isError, error } = useGetEnrollmentCourseQuery(enrollmentId)
-    const [activeIndex, setActiveIndex] = useState(null);
-    const [video, setVideo] = useState(null);
+    const { enrollmentId } = useParams();
+    const { data, isLoading, isError, refetch } = useGetEnrollmentCourseQuery(enrollmentId);
 
+    const [lesson, setLesson] = useState({
+        activeLesson: null,
+        videoUrl: null
+    });
 
-    const handleOnItemClick = (index, videoLink) => {
-        setVideo(videoLink)
-        setActiveIndex(index);
-    }
+    const handleOnItemClick = (lesson, videoLink) => {
+        const selectedItem = {
+            activeLesson: lesson,
+            videoUrl: videoLink
+        };
+        setLesson(selectedItem);
+    };
 
     useEffect(() => {
         if (!isLoading) {
             if (!isError) {
-                setVideo(data.data.enrollment.course.sections[0].lessons[0].videos[0].video_url)
-                setActiveIndex(data.data.enrollment.course.sections[0].lessons[0].lesson_id)
+                const selectedItem = {
+                    activeLesson: data?.data?.enrollment?.course?.sections[0]?.lessons[0]?.lesson_id,
+                    videoUrl: data?.data?.enrollment?.course?.sections[0]?.lessons[0]?.videos[0]?.video_url
+                };
+                setLesson(selectedItem);
+
             }
         }
-    }, [isLoading])
+    }, [isLoading]);
 
-    console.log(error)
+
+
+
+
+
     return (
-        isLoading ? <Loader /> :
-            isError ? <>error</> :
-                data && <div className='learn'>
-                    <div className='course'>
-                        <Video videoLink={SOURCEURL + video} />
-                        <div>
-
+        <div className='learn-container'>
+            {
+                isLoading ? <Loader /> :
+                    isError ? <RefreshComponent refetch={refetch} /> :
+                        data && <div className='learn'>
+                            <div className='course'>
+                                <Video videoLink={SOURCEURL + lesson.videoUrl} />
+                                <CourseTabs tabs={[
+                                    <CourseInfo course={data?.data?.enrollment?.course} />,
+                                    <PlayListContent sections={data?.data?.enrollment?.course?.sections} activeIndex={lesson.activeLesson} handleOnItemClick={handleOnItemClick} />,
+                                    <Quiz lessonId={lesson.activeLesson} />,
+                                    <Note lessonId={lesson.activeLesson} />,
+                                    null
+                                ]} />
+                                <Footer />
+                            </div>
+                            <PlayList sections={data?.data?.enrollment?.course?.sections} activeIndex={lesson.activeLesson} handleOnItemClick={handleOnItemClick} />
                         </div>
-                        <Footer />
-                    </div>
-
-
-                    <div className='play-list'>
-                        <div className='play-list-header'>
-                            <span>محتوي الكورس</span>
-                        </div>
-                        <div className='play-list-content'>
-                            {
-                                data.data.enrollment.course.sections.map((section) => <Accordion>
-                                    <Accordion.Item eventKey="0">
-                                        <Accordion.Header>
-                                            {
-                                                section.title
-
-                                            }
-                                        </Accordion.Header>
-                                        <Accordion.Body>
-                                            <ul className='lectures'>
-                                                {
-                                                    section.lessons.map((lesson) =>
-                                                        <li onClick={() => handleOnItemClick(lesson.lesson_id
-                                                            , lesson.videos[0].video_url)}
-                                                            className={activeIndex === lesson.lesson_id ? 'lecture-active' : ''}>
-                                                            <span>{lesson.title}</span>
-                                                            <span className='time'> {lesson.videos[0].duration} دقائق</span>
-                                                        </li>)
-                                                }
-
-                                            </ul>
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>)
-                            }
-
-                        </div>
-                    </div>
-                </div>
-
-    )
-}
+            }
+        </div>
+    );
+};
 
 
 

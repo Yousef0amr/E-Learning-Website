@@ -1,8 +1,8 @@
-// export const BASEURL = 'https://online-shop-yok5.onrender.com/'
-// export const SOURCEURL = 'https://online-shop-yok5.onrender.com/';
+export const BASEURL = 'https://online-shop-yok5.onrender.com/'
+export const SOURCEURL = 'https://online-shop-yok5.onrender.com/';
 
-export const BASEURL = 'http://localhost:5000/'
-export const SOURCEURL = 'http://localhost:5000/';
+// export const BASEURL = 'http://localhost:5000/';
+// export const SOURCEURL = 'http://localhost:5000/';
 
 
 
@@ -16,4 +16,6 @@ export const DOCUMENT = 'documents';
 export const LEVEL = 'levels';
 export const PAYMENT = 'payments';
 export const USER = 'users';
+export const QUIZ = 'quizzes';
+export const QUESTION = 'questions';
 

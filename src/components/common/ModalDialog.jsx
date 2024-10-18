@@ -19,18 +19,20 @@ export default function ModalDialog({ open, onClose, children }) {
         <>
             <Dialog
                 fullScreen={fullScreen}
+                maxWidth="xl"
+
                 open={open}
                 onClose={onClose}
                 aria-labelledby="responsive-dialog-title"
-
+                className='myDialog'
             >
-                <DialogTitle id="responsive-dialog-title" style={{ direction: 'rtl', width: dialogWidth ? '100%' : '500px' }}>
+                <DialogTitle id="responsive-dialog-title" style={{ direction: 'rtl', }}>
                     <Button color='error' onClick={onClose}>
                         <Close />
                     </Button>
                 </DialogTitle>
                 <Divider />
-                <DialogContent>
+                <DialogContent className='dialog-content'>
                     {children}
                 </DialogContent>
             </Dialog>

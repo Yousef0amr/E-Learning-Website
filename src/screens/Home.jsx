@@ -3,7 +3,7 @@ import Levels from "../components/level/Levels.jsx";
 import { Services } from "../components/service/Services.jsx";
 import { Header } from "../components/header/Header.jsx";
 import BookPoster from "../components/book/BookPoster.jsx";
-
+import { Footer } from "../components/common/Footer.jsx";
 
 
 
@@ -15,6 +15,7 @@ const Home = () => {
             <BookPoster />
             <Services />
             <Levels />
+            <Footer />
         </>
 
     );

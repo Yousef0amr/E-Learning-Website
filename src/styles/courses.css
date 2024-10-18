@@ -8,23 +8,26 @@
 
 
 .main-title {
-    margin-bottom: 20px;
-    padding: 8px 20px;
+    margin-bottom: 50px;
+    padding: 10px 40px;
     border: 2px solid var(--text-color);
     width: fit-content;
-    font-size: 30px;
+    font-size: 35px;
     transition: 0.3s;
     z-index: 1;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px var(--text-color);
+
 }
 
 .main-title::before,
 .main-title::after {
     content: '';
     position: absolute;
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    border-radius: 10px;
     background-color: var(--primary-color);
     top: 50%;
     transform: translateY(-50%);
@@ -86,60 +89,93 @@
     }
 }
 
+.overview {
+    width: 80vh;
+    background-color: #0000007e;
+}
+
+.overview .title {
+    padding: 10px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+@media (max-width: 576px) {
+    .overview {
+        width: 100%;
+
+    }
+}
 
 
 
-
-.card {
+.card-course {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     background-color: white;
     border-radius: 6px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.card:hover {
+.card-course:hover {
     transform: translateY(-10px);
     box-shadow: 0 2px 15px var(--text-color);
+
 }
 
-.card img {
-    max-width: 100%;
+.card-course .card-img-top {
+    width: 100%;
+}
+
+.card-course img {
     width: 100%;
     margin-bottom: 10px;
+    height: 200px;
+
 }
 
-.card .card-title {
+.card-course .card-title {
     margin: 0;
-    font-size: 22px;
+    font-size: 24px;
     color: rgba(0, 0, 0, 0.836);
 }
 
-.card .card-text {
+.card-course .card-body {
+    height: 120px;
+    overflow: hidden;
+
+}
+
+.card-course .card-text {
+    width: 100%;
     margin: 20px 0 0 0;
     line-height: 1.5;
     color: #777;
-    max-width: 200px;
+
 }
 
-.card .card-footer {
+.card-course .card-footer {
     padding: 20px;
     border-top: 1px solid #E6E6E7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
+    height: 80px;
+
 }
 
-.card .price {
+.card-course .price {
     font-size: 18px;
     font-weight: bold;
     color: var(--primary-color);
     padding: 5px;
 }
 
-.card .card-link {
+.card-course .card-link {
     font-weight: bold;
     padding: 10px 15px;
     background: #11998e;
@@ -159,70 +195,92 @@
 
 .courseDetials {
     direction: rtl;
-
 }
 
 .courseDetials .courseheader {
-    border-bottom: 1px solid var(--text-color);
     padding: 100px;
-    background: radial-gradient(circle farthest-side at 0% 50%,
-            #282828 23.5%,
-            rgba(255, 170, 0, 0) 0) 21px 30px,
-        radial-gradient(circle farthest-side at 0% 50%,
-            #2c3539 24%,
-            rgba(240, 166, 17, 0) 0) 19px 30px,
-        linear-gradient(#282828 14%,
-            rgba(240, 166, 17, 0) 0,
-            rgba(240, 166, 17, 0) 85%,
-            #282828 0) 0 0,
-        linear-gradient(150deg,
-            #282828 24%,
-            #2c3539 0,
-            #2c3539 26%,
-            rgba(240, 166, 17, 0) 0,
-            rgba(240, 166, 17, 0) 74%,
-            #2c3539 0,
-            #2c3539 76%,
-            #282828 0) 0 0,
-        linear-gradient(30deg,
-            #282828 24%,
-            #2c3539 0,
-            #2c3539 26%,
-            rgba(240, 166, 17, 0) 0,
-            rgba(240, 166, 17, 0) 74%,
-            #2c3539 0,
-            #2c3539 76%,
-            #282828 0) 0 0,
-        linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0 #282828;
-    background-size: 40px 60px;
-
+    min-height: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    box-shadow: 1px 1px 10px var(--text-color);
+    box-shadow: var(--shadow-effect);
+    --sz: 15px;
+    --c0: rgb(0, 0, 0);
+    --c1: var(--primary-color);
+    --ts: 50% / calc(var(--sz) * 8) calc(var(--sz) * 16);
+    --dot: var(--c1) 0 calc(var(--sz) * 0.78),
+        #fff0 calc(calc(var(--sz) * 0.78) + 1px) 100%;
+    --dot2: radial-gradient(circle at 90% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 0%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 0%, var(--dot)) var(--ts);
+    --cg1: conic-gradient(from -90deg at 5% 51%, var(--c0) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg2: conic-gradient(from -90deg at 25% 50%, var(--c1) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg3: conic-gradient(from -90deg at 30% 38.5%,
+            var(--c0) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg4: conic-gradient(from -90deg at 50% 37.5%,
+            var(--c1) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg5: conic-gradient(from -90deg at 55% 26%, var(--c0) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg6: conic-gradient(from -90deg at 75% 25%, var(--c1) 0 90deg, #fff0 0 100%) var(--ts);
+    --cg7: conic-gradient(from -90deg at 80% 13.5%,
+            var(--c0) 0 90deg,
+            #fff0 0 100%) var(--ts);
+    --cg8: conic-gradient(from -90deg at 100% 12.5%,
+            var(--c1) 0 90deg,
+            #fff0 0 100%) var(--ts);
+
+    background: var(--dot2), var(--dot2),
+        radial-gradient(circle at 90% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 100%, var(--dot)) var(--ts),
+        radial-gradient(circle at 90% 12.5%, var(--dot)) var(--ts),
+        radial-gradient(circle at 65% 25%, var(--dot)) var(--ts),
+        radial-gradient(circle at 40% 37.5%, var(--dot)) var(--ts),
+        radial-gradient(circle at 15% 50%, var(--dot)) var(--ts), var(--cg1),
+        var(--cg1), var(--cg2), var(--cg2), var(--cg3), var(--cg3), var(--cg4),
+        var(--cg4), var(--cg5), var(--cg5), var(--cg6), var(--cg6), var(--cg7),
+        var(--cg7), var(--cg8), var(--cg8),
+        linear-gradient(-45deg, #fff0 0 32.25%, #0002 50%, #000 77.5%) var(--ts),
+        linear-gradient(-45deg, #fff0 0 32.25%, #000 60%) var(--ts),
+        repeating-linear-gradient(90deg, var(--c0) 0 5%, var(--c1) 0 25%) var(--ts);
     color: white;
+
+
+}
+
+.courseDetials .courseheader::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 22, 22, 0.322);
+    z-index: 1;
 }
 
 .courseDetials .courseheader .title {
-
     font-size: 35px;
     font-weight: bold;
     padding: 10px;
-    z-index: 100;
+    z-index: 10;
+    border-radius: 10px;
 }
 
 .courseDetials .courseheader .description {
-
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     padding: 10px;
-    z-index: 100;
-
+    border-radius: 10px;
+    z-index: 10;
 }
 
 .courseDetials .courseheader .cardHeader {
-    width: 350px;
+    max-width: 350px;
     position: absolute;
     top: 50px;
     left: 150px;
@@ -233,6 +291,7 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 
 }
 
@@ -283,7 +342,7 @@
 .courseDetials .add {
     margin-top: 15px;
     border: 1px solid rgba(0, 0, 0, 0.349);
-    padding: 10px 100px;
+    padding: 10px 50px;
     font-size: 20px;
     cursor: pointer;
     transition: 0.3s;
@@ -291,10 +350,7 @@
 }
 
 .courseDetials .add:hover {
-    background: #34e89e;
-    background: -webkit-linear-gradient(to right, #0f3443, #34e89e);
-    background: linear-gradient(to right, #0f3443, #34e89e);
-
+    background: var(--primary-color);
     border: 1px solid white;
     color: white;
 }
@@ -304,6 +360,7 @@
     padding: 50px;
     border-radius: 10px;
     margin-bottom: 150px;
+
 }
 
 
@@ -334,12 +391,12 @@
     font-size: 25px;
     justify-content: space-between;
     box-shadow: none;
-    transition: 0.5S;
+
 }
 
 
 .courseDetials .content .accordion-button:not(.collapsed) {
-    transition: 0.5s;
+
     background: #E6E6E7;
     box-shadow: none;
 }
@@ -349,16 +406,6 @@
 }
 
 
-
-.course-goals {
-    width: 65%;
-    padding: 50px;
-
-    border-radius: 10px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    color: var(--text-color);
-}
 
 
 .lesson {
@@ -406,7 +453,6 @@
 
     .card .card-text {
         font-size: 16px;
-        max-width: 180px;
     }
 
     .card .price {
@@ -437,10 +483,28 @@
 
 }
 
+@media (max-width: 1024px) {
+    .overview {
+        width: 50%;
+
+    }
+
+    .courseDetials .courseheader {
+        padding: 50px;
+    }
+}
+
+
+
 /* For tablets (up to 992px) */
 @media (max-width: 992px) {
     .main-title {
         font-size: 22px;
+    }
+
+    .overview {
+        width: 100%;
+
     }
 
     .card .card-title {
@@ -449,7 +513,7 @@
 
     .card .card-text {
         font-size: 14px;
-        max-width: 160px;
+
     }
 
     .card .price {
@@ -463,10 +527,6 @@
 
     .courseDetials .courseheader {
         flex-direction: column-reverse;
-
-        padding: 10px;
-        background: transparent;
-        color: var(--text-color);
         box-shadow: none;
         border: 0;
     }
@@ -538,15 +598,12 @@
 
     .card .card-text {
         font-size: 14px;
-        max-width: 140px;
+
     }
 
     .courseDetials .courseheader {
         flex-direction: column-reverse;
 
-        padding: 10px;
-        background: transparent;
-        color: var(--text-color);
         box-shadow: none;
         border: 0;
     }
@@ -620,15 +677,16 @@
 
     .card .card-text {
         font-size: 14px;
-        max-width: 120px;
+
+    }
+
+    .card .card-body {
+        height: 100px;
     }
 
     .courseDetials .courseheader {
         flex-direction: column-reverse;
-
-        padding: 10px;
-        background: transparent;
-        color: var(--text-color);
+        padding: 20px;
         box-shadow: none;
         border: 0;
     }

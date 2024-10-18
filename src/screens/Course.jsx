@@ -9,13 +9,15 @@ import './../styles/courses.css'
 import { Header } from '../components/header/Header'
 import SectionTitle from '../components/common/SectionTitle'
 import { Footer } from '../components/common/Footer'
+import { useTranslation } from 'react-i18next'
+import AppStrings from '../utils/appStrings'
 
 export const Course = () => {
     const { id } = useParams()
 
     const { data, isLoading, isError, refetch } = useGetLevelQuery(id)
 
-    console.log(data)
+    const { t } = useTranslation()
     return (
         <>
             <Container >
@@ -23,7 +25,7 @@ export const Course = () => {
                 {isLoading ? <Loader /> :
                     isError ? <RefreshComponent refetch={refetch} /> :
                         data && data?.data?.level && <>
-                            <SectionTitle title={" كورسات " + data.data.level.name} />
+                            <SectionTitle title={t(AppStrings.courses) + " " + data.data.level.name} />
                             <CategoriesList categories={data.data.level.categories} />
                         </>
                 }

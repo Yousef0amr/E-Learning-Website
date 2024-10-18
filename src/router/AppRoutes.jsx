@@ -9,17 +9,27 @@ import NotFound from './../components/common/NotFound.jsx';
 import { Course } from './../screens/Course.jsx';
 import { CourseDetails } from './../screens/CourseDetails.jsx';
 import Home from './../screens/Home.jsx';
-import { Footer } from '../components/common/Footer.jsx';
 import Subscribe from '../screens/Subscribe.jsx';
 import MyCourses from '../screens/MyCourses.jsx';
+import Profile from '../screens/Profile.jsx';
+import Wallet from '../screens/Wallet.jsx';
+import UserProfile from '../components/profile/UserProfile.jsx';
+import Invoices from '../screens/Invoices.jsx';
+
+import CloseAccount from '../screens/CloseAccount.jsx';
+import { Navigate } from 'react-router-dom';
+import ChangePassword from '../screens/ChangePassword.jsx';
+import ForgetPassword from '../screens/ForgetPassword.jsx';
+import RestPassword from '../screens/RestPassword.jsx';
 
 const AppRoutes = () => {
     const location = useLocation()
+
     return (
         <Routes location={location} key={location.pathname}>
             <Route index path="/" element={
                 <Animate >
-                    <Home />  <Footer />
+                    <Home />
                 </Animate>
             } />
             <Route element={<ProtectedRoute />}>
@@ -30,25 +40,59 @@ const AppRoutes = () => {
                         <Route path='subscribe/invoice' element={
                             <Animate >
                                 <Subscribe />
-
                             </Animate>
                         } />
-
                     </Route>
-
-
                 </Route>
-
                 <Route path="/my-courses" element={
                     <Animate >
                         <MyCourses />
                     </Animate>
                 } />
-                <Route path="/course/:courseId/learn/:enrollmentId" element={
-                    <Animate >
-                        <Learn />
-                    </Animate>
-                } />
+                <Route path="/profile" element={
+                    <Profile />
+                } >
+                    <Route index element={<Navigate to="my-account" />} />
+
+                    <Route path='my-account' element={
+                        <Animate >
+                            <UserProfile />
+                        </Animate>
+                    } />
+
+                    <Route path='my-wallet' element={
+                        <Animate >
+                            <Wallet />
+                        </Animate>
+                    } />
+
+                    <Route path='my-invoices' element={
+                        <Animate >
+                            <Invoices />
+                        </Animate>
+                    } />
+
+                    <Route path='change-password' element={
+                        <Animate >
+                            <ChangePassword />
+                        </Animate>
+                    } />
+                    <Route path='close-account' element={
+                        <Animate >
+                            <CloseAccount />
+                        </Animate>
+                    } />
+                </Route>
+
+                <Route path="/course/:courseId/learn/:enrollmentId"  >
+                    <Route index element={
+                        <Animate >
+                            <Learn />
+                        </Animate>
+                    } />
+
+
+                </Route>
             </Route>
             <Route element={<LoginRoute />}>
                 <Route path="/login" element={
@@ -60,6 +104,18 @@ const AppRoutes = () => {
                 <Route path="/sign-up" element={
                     <Animate >
                         <SignUp />
+
+                    </Animate>
+                } />
+                <Route path="/reset-password-email" element={
+                    <Animate >
+                        <ForgetPassword />
+
+                    </Animate>
+                } />
+                <Route path="/reset-password" element={
+                    <Animate >
+                        <RestPassword />
 
                     </Animate>
                 } />

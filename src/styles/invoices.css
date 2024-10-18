@@ -6,6 +6,7 @@
 
     margin-top: 50px;
     margin-bottom: 100px;
+
 }
 
 .invoice .invoice-title {
@@ -18,7 +19,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 20px;
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--primary-color);
     direction: rtl;
 }
 
@@ -35,12 +36,12 @@
 }
 
 .invoice .invoice-info-container {
-
     display: flex;
 }
 
 .invoice .invoice-info span {
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px dotted var(--primary-color);
+
     padding: 20px;
     width: 100%;
     text-align: end;
@@ -65,7 +66,7 @@
     transition: 0.5s;
     border-radius: 5px;
     padding: 10px 100px;
-    font-size: large;
+    font-size: medium;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -85,7 +86,7 @@
     transition: 0.5s;
     border-radius: 5px;
     padding: 10px;
-    font-size: large;
+    font-size: medium;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -109,7 +110,7 @@
 .coupon .coupon-title {
     font-size: 15px;
     font-weight: bold;
-
+    margin-bottom: 10px;
 }
 
 .coupon .coupon-title span {
@@ -213,6 +214,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .subscribe-conditions .subscribe-icon {
@@ -227,6 +229,7 @@
     text-align: center;
     margin-bottom: 20px;
     color: #777;
+
 }
 
 .subscribe-conditions .subscribe-buttons {
@@ -265,4 +268,136 @@
 .subscribe-conditions .subscribe-buttons .close:hover {
     background-color: white;
     color: red;
+}
+
+/* Base Styles (already provided) */
+
+/* Add a media query for 1200px */
+@media (max-width: 1200px) {
+    .invoice {
+        padding: 40px;
+        margin-top: 40px;
+        margin-bottom: 80px;
+    }
+
+    .invoice .invoice-title {
+        font-size: 28px;
+    }
+
+    .invoice .invoice-info {
+        font-size: 18px;
+    }
+
+
+    .invoice .pay-with-card,
+    .invoice .pay-with-wallet {
+        padding: 10px 60px;
+        font-size: 14px;
+    }
+
+    .coupon .coupon-title {
+        font-size: 16px;
+    }
+
+    .coupon .coupon-form .copy-btn {
+        padding: 10px 30px;
+        font-size: large;
+    }
+
+
+
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 992px) {
+
+    .invoice {
+        padding: 30px;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+
+    .invoice .invoice-info {
+        font-size: 14px;
+    }
+
+    .invoice .pay-with-card,
+    .invoice .pay-with-wallet {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .invoice {
+        padding: 30px;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    .invoice .invoice-title {
+        font-size: 24px;
+    }
+
+    .invoice .invoice-info {
+        font-size: 14px;
+    }
+
+    .coupon .coupon-title {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .coupon .coupon-form .copy-btn {
+        padding: 10px 30px;
+        font-size: large;
+    }
+
+
+}
+
+/* Mobile devices (576px and below) */
+@media (max-width: 576px) {
+    .invoice {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 150px;
+        box-shadow: none;
+
+    }
+
+    .invoice .invoice-title {
+        font-size: 20px;
+    }
+
+    .invoice .invoice-info {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .invoice .invoice-info-container {
+        align-items: normal;
+    }
+
+    .invoice .pay-with-card,
+    .invoice .pay-with-wallet {
+        padding: 5px 10px;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .coupon .coupon-title {
+        font-size: 14px;
+    }
+
+    .coupon .coupon-form .copy-btn {
+        padding: 10px 15px;
+        font-size: medium;
+        width: 100%;
+    }
+
+
 }
