@@ -10,9 +10,13 @@ import QuestionSlides from '../components/quiz/QuestionSlides';
 import Loader from '../components/common/Loader';
 import QuizResults from '../components/quiz/QuizResults';
 import RefreshComponent from '../components/common/RefreshComponent';
+import { useLocation } from 'react-router-dom';
 
-const Quiz = ({ lessonId }) => {
+const Quiz = () => {
     const [show, setShow] = useState(false);
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const lessonId = searchParams.get('lessonId');
     const { data, isLoading, isError, refetch } = useGetQuizzesQuery(lessonId);
     const [quizId, setQuizId] = useState(0);
 

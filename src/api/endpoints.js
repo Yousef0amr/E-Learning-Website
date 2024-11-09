@@ -1,10 +1,12 @@
-export const BASEURL = 'https://online-shop-yok5.onrender.com/'
-export const SOURCEURL = 'https://online-shop-yok5.onrender.com/';
+// export const BASEURL = 'https://online-shop-yok5.onrender.com/'
+// export const SOURCEURL = 'https://online-shop-yok5.onrender.com/';
+
+export const BASEURL = 'http://localhost:5000/';
+export const SOURCEURL = 'http://localhost:5000/';
 
 // export const BASEURL = 'http://localhost:5000/';
-// export const SOURCEURL = 'http://localhost:5000/';
-
-
+export const SOURCEURLVIDEO = 'https://res.cloudinary.com/duhe9gubt/video/upload/';
+export const SOURCEURLIMAGE = 'https://res.cloudinary.com/duhe9gubt/image/upload/';
 
 export const CATEGORY = 'categories';
 export const COURSE = 'courses';

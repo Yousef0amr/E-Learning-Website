@@ -5,6 +5,7 @@ import getCookie from '../../utils/getCookie.js';
 
 export const levelApi = createApi({
     reducerPath: 'levelApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + LEVEL,
         prepareHeaders: (headers) => {

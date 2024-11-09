@@ -7,6 +7,7 @@ import getCookie from './../../utils/getCookie.js'
 
 export const authApi = createApi({
     reducerPath: 'authApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + USER,
         credentials: 'include',

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { SOURCEURL } from '../../api/endpoints'
+import { SOURCEURLIMAGE } from '../../api/endpoints'
 import { Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import AppStrings from '../../utils/appStrings'
@@ -13,7 +13,7 @@ export const CourseCard = ({ course, isEnrolled, ...props }) => {
         <Card className="card-course">
             <Link to={isEnrolled ? `/course/${course.course_id}/learn/${props.enrollment_id}` : `course/${course.course_id}`}>
                 <div className="card-img-top" >
-                    <img src={SOURCEURL + course.poster_url} alt="" loading="lazy" />
+                    <img src={SOURCEURLIMAGE + course.poster_url} alt="" loading="lazy" />
 
                 </div>
                 <div className="card-body">

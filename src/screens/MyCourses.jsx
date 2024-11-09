@@ -1,16 +1,28 @@
-import React from 'react'
-import { useGetUserEnrollmentsQuery } from '../features/slices/enrollmentSlice'
-import { Col, Container, Row } from 'react-bootstrap'
-import Loader from '../components/common/Loader'
-import { CourseCard } from '../components/course/CourseCard'
-import SectionTitle from '../components/common/SectionTitle'
-import RefreshComponent from '../components/common/RefreshComponent'
-import { Footer } from '../components/common/Footer'
-import { useTranslation } from 'react-i18next'
-import AppStrings from '../utils/appStrings'
+import React, { useEffect } from 'react';
+import { useGetUserEnrollmentsQuery } from '../features/slices/enrollmentSlice';
+import { Col, Container, Row } from 'react-bootstrap';
+import Loader from '../components/common/Loader';
+import { CourseCard } from '../components/course/CourseCard';
+import SectionTitle from '../components/common/SectionTitle';
+import RefreshComponent from '../components/common/RefreshComponent';
+import { Footer } from '../components/common/Footer';
+import { useTranslation } from 'react-i18next';
+import AppStrings from '../utils/appStrings';
+import { useLocation } from 'react-router-dom';
 const MyCourses = () => {
-    const { data, isLoading, isError, refetch } = useGetUserEnrollmentsQuery()
-    const { t } = useTranslation()
+    const { data, isLoading, isError, refetch } = useGetUserEnrollmentsQuery();
+    const { t } = useTranslation();
+
+
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location?.state?.isPurchased) {
+            refetch();
+        }
+    }, [location.state, refetch]);
+
+
     return (
         < >
             <div >
@@ -21,7 +33,7 @@ const MyCourses = () => {
                             data && data?.data?.enrollments?.length > 0 ?
                                 <Container style={{ minHeight: '80vh', marginBottom: '50px' }}>
 
-                                    <Row md={3} sm={2} xs={1} xl={3} style={{ direction: 'rtl' }} >
+                                    <Row md={2} sm={1} xs={1} xl={3} style={{ direction: 'rtl' }} >
                                         {
                                             data?.data?.enrollments.map((enroll) => {
                                                 return (
@@ -43,7 +55,7 @@ const MyCourses = () => {
 
         </>
 
-    )
-}
+    );
+};
 
-export default MyCourses
+export default MyCourses;

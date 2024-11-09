@@ -68,7 +68,7 @@ const Invoice = ({ course }) => {
                 if (result.data.isPayed) {
                     notification('success', t(AppStrings.course_purchased_successfully));
                     setTimeout(() => {
-                        navigate('/my-courses');
+                        navigate('/my-courses', { state: { isPurchased: true } });
                     }, 1500);
                 }
             }

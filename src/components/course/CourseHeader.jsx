@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import { SOURCEURL } from '../../api/endpoints';
+import { SOURCEURLIMAGE } from '../../api/endpoints';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
 
@@ -22,7 +22,7 @@ export const CourseHeader = ({ course, show }) => {
             {
                 show && <div className='cardHeader'>
 
-                    <img src={SOURCEURL + course.poster_url} alt={''} loading="lazy" />
+                    <img src={SOURCEURLIMAGE + course.poster_url} alt={''} loading="lazy" />
                     <div className='cardBody'>
                         {
                             course.enrollments[0] ? <> <Link to={`/course/${course.course_id}/learn/${course.enrollments[0].enrollment_id}`}>

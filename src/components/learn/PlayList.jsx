@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import AppStrings from '../../utils/appStrings'
 
 const PlayList = ({ sections, activeIndex, handleOnItemClick }) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
 
     return (
@@ -14,7 +14,7 @@ const PlayList = ({ sections, activeIndex, handleOnItemClick }) => {
             </div>
             <PlayListContent sections={sections} activeIndex={activeIndex} handleOnItemClick={handleOnItemClick} />
         </div>
-    )
-}
+    );
+};
 
-export default PlayList
+export default PlayList;

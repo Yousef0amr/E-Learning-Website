@@ -24,7 +24,7 @@ function App() {
           <AppRoutes />
         </Wrapper>
       </AnimatePresence>
-      <BackToTop />
+      {/* <BackToTop /> */}
     </div>
   );
 }

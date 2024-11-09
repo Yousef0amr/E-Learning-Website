@@ -42,10 +42,12 @@ export default function CourseTabs({ tabs }) {
     };
 
     return (
-        <Box sx={{ width: '100%', direction: 'rtl', backgroundColor: 'var(--background-color)' }}>
+        <Box sx={{ width: '100%', direction: 'rtl', backgroundColor: 'var(--background-color)', minHeight: '50vh' }}>
             <Box sx={{ borderBottom: 1, color: 'var(--text-color)', borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} textColor="inherit"
-                    indicatorColor="secondary" aria-label="basic tabs example">
+                    indicatorColor="secondary" aria-label="basic tabs example" variant="scrollable"
+                    scrollButtons
+                >
                     <Tab label={t(AppStrings.overview)}   {...a11yProps(0)} />
                     <Tab label={t(AppStrings.course_content)}   {...a11yProps(1)} />
                     <Tab label={t(AppStrings.course_quizzes)}  {...a11yProps(2)} />
@@ -55,13 +57,11 @@ export default function CourseTabs({ tabs }) {
             </Box>
             {
                 tabs?.map((tab, index) => (
-                    <CustomTabPanel value={value} index={index}>
+                    <CustomTabPanel key={index} value={value} index={index}>
                         {tab}
                     </CustomTabPanel>
                 ))
             }
-
-
         </Box>
     );
 }

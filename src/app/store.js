@@ -7,6 +7,7 @@ import { paymentApi } from '../features/slices/paymentSlice'
 import { enrollmentApi } from '../features/slices/enrollmentSlice'
 import { quizApi } from '../features/slices/quizSlice'
 import { lessonApi } from '../features/slices/lessonSlice'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
 
 
@@ -27,8 +28,11 @@ const store = configureStore(
             getDefaultMiddleware().concat(authApi.middleware, levelApi.middleware,
                 courseApi.middleware, couponApi.middleware, paymentApi.middleware,
                 enrollmentApi.middleware, quizApi.middleware, lessonApi.middleware),
+
+
     }
 )
 
+setupListeners(store.dispatch)
 
 export default store

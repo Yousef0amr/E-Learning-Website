@@ -1,3 +1,7 @@
+:root {
+    --border-color-1: #d1d7dc
+}
+
 .learn {
     padding: 0;
     display: flex;
@@ -6,10 +10,12 @@
 
 
 .learn .course {
-    width: 75%;
+    width: 70%;
     z-index: 1200;
 
 }
+
+
 
 .learn .course .course-info {
     padding: 10px;
@@ -17,69 +23,64 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--border-color-1);
     margin-bottom: 150px;
+
 }
 
 .learn .course .course-info .course-img {
-    height: 110px;
-    width: 110px;
-    border-radius: 50%;
+    height: 100px;
+    width: 100px;
 
 }
 
 .learn .course .course-info .course-img img {
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 
 
 .learn .play-list {
-    position: fixed;
+    position: sticky;
     right: 0;
-    top: 100px;
-    width: 25%;
-
+    top: 0;
+    width: 30%;
     z-index: 1200;
     color: var(--text-color);
 
-    background-color: var(--primary-color);
     transition: 1s;
+    border-left: 1px solid var(--border-color-1);
+    height: 100vh;
 
 }
 
 .learn .play-list .play-list-header {
     z-index: 1200;
     direction: rtl;
-
-    padding: 20px 30px;
+    padding: 15px 30px;
     font-size: 20px;
-    color: white;
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
-    background-color: var(--primary-color);
-    box-shadow: var(--shadow-effect);
+    background-color: var(--background-color);
+    box-shadow: 1px 10px 5px var(--border-color-1);
 }
 
 
 .learn .play-list .play-list-content {
-
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     height: 100%;
-
-
 }
 
 
 
 .learn .accordion-item {
     border-radius: 0 !important;
-
     box-shadow: none;
     color: var(--text-color) !important;
     border: 0;
-    border-bottom: 1px solid var(--text-color);
-
+    border-bottom: 1px solid var(--border-color-1);
     transition: 0.5s;
     background-color: var(--background-color) !important;
 }
@@ -91,7 +92,7 @@
     font-size: 20px;
     direction: rtl;
     justify-content: space-between;
-    background-color: var(--background-color) !important;
+    background-color: #eeeeee63 !important;
     transition: 0.5S;
     border-radius: 0 !important;
     box-shadow: none;
@@ -102,8 +103,6 @@
 .learn .accordion-button:not(.collapsed) {
     transition: 0.5s;
     box-shadow: none;
-    border-top-left-radius: 10px !important;
-    border-bottom: 1px solid var(--text-color);
 }
 
 .learn .accordion-button::after {
@@ -123,21 +122,23 @@
     margin: 0;
     padding: 0;
     direction: rtl;
-
+    counter-reset: lecture;
 }
 
 .learn .lectures li {
+
     cursor: pointer;
-    border-bottom: 1px solid rgba(185, 185, 185, 0.267);
     padding: 15px 25px 15px 15px;
-    background-color: rgba(211, 211, 211, 0.562);
     transition: 0.5s;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     color: var(--text-color);
+    position: relative;
 }
+
+
 
 .learn .lectures li .time {
     font-size: 15px;
@@ -146,17 +147,13 @@
 }
 
 .learn .lectures li:hover {
-    background-color: rgba(211, 211, 211, 0.562);
-    color: var(--text-color);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .lecture-active {
-    background: var(--primary-color);
-
-
-    border-left: 15px solid var(--primary-color);
-    color: var(--text-color);
-
+    color: white !important;
+    background-color: var(--primary-color);
 }
 
 .learn .lectures li.lecture-active .time {}
@@ -311,6 +308,149 @@
 
 
 
+.card-comment {
+    width: 50vw;
+    height: fit-content;
+    background-color: var(--background-color);
+    border: 0;
+    direction: rtl;
+    position: relative;
+    margin-bottom: 120px;
+
+}
+
+
+
+
+
+.comments {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    overflow-wrap: break-word;
+
+}
+
+
+.comment-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-container .user {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 10px;
+
+}
+
+.comment-container .user .user-pic {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    color: white
+}
+
+
+
+.comment-container .user .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.comment-container .user .user-info span {
+    font-weight: 700;
+    font-size: 14px;
+    color: #47484b;
+}
+
+.comment-container .comment-date {
+    font-weight: 600;
+    font-size: 10px;
+    color: #acaeb4;
+}
+
+.comment-container .comment-content {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #5f6064;
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.text-box {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid var(--border-color-1);
+    background-color: white;
+}
+
+
+.text-box textarea {
+    background-color: #EEEEEE;
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    max-height: 80px;
+    border: 0;
+    font-size: 13px;
+    outline: none;
+    caret-color: #0a84ff;
+    color: var(--text-color);
+    border-radius: 10px;
+
+}
+
+
+.text-box .send {
+    width: 30px;
+    height: 30px;
+    background-color: #474747e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    border: 0;
+    outline: none;
+    margin: 10px;
+}
+
+.text-box .send:hover {
+    background-color: var(--primary-color);
+}
+
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
 
 @media (max-width: 1200px) {
 
@@ -324,16 +464,28 @@
         display: none;
     }
 
+    .card-comment {
+        width: 100%;
 
+
+    }
 }
 
+@media (max-width: 900px) {
+    .card-comment .comment-form {
+        position: fixed;
+        bottom: 0;
+    }
+}
 
-@media (max-width: 992px) {}
 
 @media (max-width: 768px) {
     .note-modal {
         width: 100%;
     }
+
+
+
 
     .add-note {
         font-size: 15px;
@@ -376,8 +528,18 @@
         font-size: 18px;
     }
 
+    .user-badge {
+        font-size: 13px !important;
+    }
+
 
 }
 
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+    .user-badge {
+        font-size: 10px !important;
+    }
+
+
+}

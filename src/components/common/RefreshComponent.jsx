@@ -8,7 +8,7 @@ const RefreshComponent = ({ refetch }) => {
     return (
         <div className='error  text-center mb-5  p-5 rounded'>
             <Button className='btn-danger  fs-5' onClick={() => refetch()}>{t(AppStrings.refresh)} </Button>
-            <p className='fs-4 text-danger mt-3'>{t(AppStrings.try_later)}</p>
+            <p className='fs-5 text-danger mt-3'>{t(AppStrings.try_later)}</p>
         </div>
     )
 }

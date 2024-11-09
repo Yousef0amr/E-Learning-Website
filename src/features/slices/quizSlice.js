@@ -4,6 +4,7 @@ import getCookie from "../../utils/getCookie";
 
 export const quizApi = createApi({
     reducerPath: 'quizApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL, prepareHeaders: (headers) => {
             headers.set('authorization', `Bearer ${getCookie('accessToken')}`);

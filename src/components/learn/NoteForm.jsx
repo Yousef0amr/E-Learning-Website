@@ -56,28 +56,23 @@ const NoteForm = ({ onSubmitClicked, isLoading, isEditNote = false, note, lesson
                 <input
                     label="Title"
                     className='note-title-input'
-                    variant="outlined"
+
                     placeholder={t(AppStrings.noteTitlePlaceholder)}
-                    fullWidth
+
                     {...register('title')}
-                    error={!!errors.title}
-                    helperText={errors.title ? errors.title.message : ''}
+
+
                 />
                 <textarea
                     label="Content"
                     placeholder={t(AppStrings.noteContentPlaceholder)}
                     className='note-content-input'
-                    as="textarea"
-                    variant="outlined"
-                    fullWidth
                     {...register('content')}
-                    error={!!errors.content}
-                    helperText={errors.content ? errors.content.message : ''}
                 />
                 <button className='btn text-white' style={{ backgroundColor: 'var(--primary-color)' }} type="submit">{isLoading ? <SpinnerLoader /> : t(AppStrings.save_note)}</button>
             </form>
         </>
-    )
-}
+    );
+};
 
-export default NoteForm
+export default NoteForm;

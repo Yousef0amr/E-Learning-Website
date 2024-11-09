@@ -6,6 +6,7 @@ import ModalDialog from '../common/ModalDialog'
 import NoteForm from './NoteForm'
 import { useTranslation } from 'react-i18next'
 import AppStrings from '../../utils/appStrings'
+import SpinnerLoader from '../common/Spinner'
 const NoteCard = ({ note, ...props }) => {
     const [show, setShow] = useState(false);
     const { t } = useTranslation()
@@ -15,6 +16,7 @@ const NoteCard = ({ note, ...props }) => {
             setShow(false)
         }
     }, [props.isUpdateSuccess])
+
 
     return (
         <div className='note'>
@@ -31,7 +33,7 @@ const NoteCard = ({ note, ...props }) => {
 
                     <Button style={{ backgroundColor: 'transparent', border: 'none' }} onClick={() => props.onDelete(note.note_id)}>
                         {
-                            props.isDeleteSuccess ? <span style={{ color: 'var(--question-color-1)', fontSize: '20px' }}>{t(AppStrings.note_deleted_successfully)}</span> : <FontAwesomeIcon style={{ color: 'var(--question-color-1)', fontSize: '20px' }} icon={faTrash} />
+                            props.isDeleteSuccess ? <span style={{ color: 'var(--question-color-1)', fontSize: '20px' }}><SpinnerLoader /></span> : <FontAwesomeIcon style={{ color: 'var(--question-color-1)', fontSize: '20px' }} icon={faTrash} />
                         }
                     </Button>
                     <Button style={{ backgroundColor: 'transparent', border: 'none' }} onClick={() => setShow(true)}>
@@ -43,13 +45,14 @@ const NoteCard = ({ note, ...props }) => {
                 {note.content}
             </div>
             <ModalDialog open={show} onClose={() => setShow(false)} >
+
                 <div className='note-modal'>
-                    <NoteForm note={note} isEditNote={true} onSubmitClicked={props.onEdit} />
+                    <NoteForm note={note} isEditNote={true} onSubmitClicked={props.onEdit} isLoading={props.isUpdateSuccess} />
                 </div>
 
             </ModalDialog>
         </div>
-    )
-}
+    );
+};
 
-export default NoteCard
+export default NoteCard;

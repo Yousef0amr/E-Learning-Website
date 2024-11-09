@@ -17,6 +17,8 @@ import Loader from './components/common/Loader.jsx';
 import { ErrorBoundary } from "react-error-boundary";
 import './../src/localization/config.js'
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

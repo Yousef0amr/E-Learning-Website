@@ -8,8 +8,11 @@ import Loader from '../common/Loader';
 import RefreshComponent from '../common/RefreshComponent';
 import { useTranslation } from 'react-i18next';
 import AppStrings from '../../utils/appStrings';
-const Note = ({ lessonId }) => {
-
+import { useLocation } from 'react-router-dom';
+const Note = () => {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const lessonId = searchParams.get('lessonId');
     const { data, isLoading, isError, refetch } = useGetAllNotesQuery(lessonId);
     const [addNote, { isLoading: isAddSuccess }] = useAddNoteMutation();
     const [deleteNote, { isLoading: isDeleteSuccess }] = useDeleteNoteMutation();

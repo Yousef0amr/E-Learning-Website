@@ -7,6 +7,7 @@ import convertToFormData from '../../utils/convertToFormData';
 
 export const paymentApi = createApi({
     reducerPath: 'paymentApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + PAYMENT,
         prepareHeaders: (headers) => {

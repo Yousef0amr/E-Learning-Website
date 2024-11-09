@@ -4,7 +4,7 @@ import { CourseCard } from './CourseCard'
 const CoursesList = ({ courses }) => {
 
     return (
-        <Row md={3} sm={2} xs={1} xl={3} >
+        <Row lg={3} md={3} sm={2} xs={1} xl={3} >
             {
                 courses.map((course) => (
                     <Col key={course.course_id}>

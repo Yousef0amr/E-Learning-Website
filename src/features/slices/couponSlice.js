@@ -5,6 +5,7 @@ import getCookie from '../../utils/getCookie';
 import convertToFormData from '../../utils/convertToFormData';
 export const couponApi = createApi({
     reducerPath: 'couponApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + COUPON,
         prepareHeaders: (headers) => {

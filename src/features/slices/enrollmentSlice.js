@@ -8,6 +8,7 @@ import getCookie from '../../utils/getCookie';
 
 export const enrollmentApi = createApi({
     reducerPath: 'enrollmentApi',
+    refetchOnReconnect: true,
     baseQuery: fetchBaseQuery({
         baseUrl: BASEURL + USER,
         credentials: 'include',

@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { LevelCard } from './LevelCard'
-import { SOURCEURL } from '../../api/endpoints'
+import { SOURCEURLIMAGE } from '../../api/endpoints'
 import background from './../../assets/level.jpg'
 
 const LevelsList = ({ levels }) => {
@@ -12,7 +12,7 @@ const LevelsList = ({ levels }) => {
 
                 <Col key={level.level_id} lg={4} md={4} sm={12} >
                     <Link to={`/years/${level.level_id}`}>
-                        <LevelCard image={SOURCEURL + level.poster_url} title={level.name} subTitle={level.description} />
+                        <LevelCard image={SOURCEURLIMAGE + level.poster_url} title={level.name} subTitle={level.description} />
                     </Link>
                 </Col>
 
